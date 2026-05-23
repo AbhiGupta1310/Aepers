@@ -1,5 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/citadel-script');
 @import url('https://fonts.cdnfonts.com/css/helvetica-neue-5');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
 
 /* ============================================
    CSS CUSTOM PROPERTIES — DESIGN TOKENS
@@ -189,6 +191,7 @@ h5 {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  align-self: flex-start;
 }
 
 .badge-teal {
@@ -1429,6 +1432,12 @@ h5 {
   margin-top: 64px;
 }
 
+.services-grid > .animate-on-scroll {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .service-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1441,6 +1450,7 @@ h5 {
     box-shadow 0.3s var(--ease-out-expo),
     transform 0.3s var(--ease-out-expo);
   cursor: pointer;
+  height: 100%;
 }
 
 .service-card:hover {
@@ -1477,7 +1487,7 @@ h5 {
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 16px;
-  min-height: 80px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1504,6 +1514,7 @@ h5 {
   font-weight: 500;
   padding-top: 8px;
   border-top: 1px solid var(--border);
+  margin-top: auto;
 }
 
 .service-cta-link {

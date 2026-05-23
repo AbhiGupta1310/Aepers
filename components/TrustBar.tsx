@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 const stats = [
   { value: 14, suffix: " days", label: "to deployment" },
   { value: 100, suffix: "%", label: "code ownership" },
-  { prefix: "₹", value: 0, suffix: "", label: "lock-in fees" },
 ];
 
 const tickerItems = [
