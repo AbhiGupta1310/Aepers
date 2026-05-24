@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ScrollAnimation from "@/components/ScrollAnimation";
+import DocxModalButton from "@/components/DocxModalButton";
 
 export const metadata: Metadata = {
   title: "RAG Chatbots — Aepers",
@@ -28,6 +29,12 @@ export default function ChatbotsPage() {
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
               <Link href="/#contact" className="btn-primary">Book Free Audit →</Link>
               <Link href="/#how-it-works" className="btn-ghost">How It Works</Link>
+              <DocxModalButton 
+                title="Chatbot Specifications" 
+                description=""
+                fileUrl="/docs/chatbot-spec.docx"
+                fileName="chatbot-spec.docx"
+              />
             </div>
           </div>
         </div>
@@ -85,7 +92,7 @@ export default function ChatbotsPage() {
               <div className="before-after-card before-card">
                 <p className="before-after-label">✗ Before</p>
                 <ul className="before-after-items">
-                  {["Support team answers same questions 50x/day","New hires search 10 documents to find one answer","Response time: hours or days","No consistency — different answers from different people","Knowledge trapped in PDFs nobody reads"].map(i => (
+                  {["Support team answers same questions 50x/day", "New hires search 10 documents to find one answer", "Response time: hours or days", "No consistency — different answers from different people", "Knowledge trapped in PDFs nobody reads"].map(i => (
                     <li key={i} className="before-after-item"><span className="before-after-icon">✗</span>{i}</li>
                   ))}
                 </ul>
@@ -95,7 +102,7 @@ export default function ChatbotsPage() {
               <div className="before-after-card after-card">
                 <p className="before-after-label">✓ After</p>
                 <ul className="before-after-items">
-                  {["60% of support queries handled automatically","New hires onboard 3x faster with instant answers","Response time: under 3 seconds, 24/7","Consistent, accurate answers every time","All your knowledge is searchable in plain English"].map(i => (
+                  {["60% of support queries handled automatically", "New hires onboard 3x faster with instant answers", "Response time: under 3 seconds, 24/7", "Consistent, accurate answers every time", "All your knowledge is searchable in plain English"].map(i => (
                     <li key={i} className="before-after-item"><span className="before-after-icon">✓</span>{i}</li>
                   ))}
                 </ul>

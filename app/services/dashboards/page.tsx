@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ScrollAnimation from "@/components/ScrollAnimation";
+import DocxModalButton from "@/components/DocxModalButton";
 
 export const metadata: Metadata = {
   title: "Data Pipelines & Dashboards — Aepers",
@@ -28,6 +29,12 @@ export default function DashboardsPage() {
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
               <Link href="/#contact" className="btn-primary">Book Free Audit →</Link>
               <Link href="/#how-it-works" className="btn-ghost">How It Works</Link>
+              <DocxModalButton 
+                title="Data Dashboards Specs" 
+                description=""
+                fileUrl="/docs/data-dashboards-spec.docx"
+                fileName="data-dashboards-spec.docx"
+              />
             </div>
           </div>
         </div>
@@ -84,7 +91,7 @@ export default function DashboardsPage() {
               <div className="before-after-card before-card">
                 <p className="before-after-label">✗ Before</p>
                 <ul className="before-after-items">
-                  {["Weekly reports take 4 hours to compile manually","Data sits in 5 different tools, never in one place","CEO has to ask data team for every insight","Month-end analysis takes 2 days","Business decisions made on stale data"].map(i => (
+                  {["Weekly reports take 4 hours to compile manually", "Data sits in 5 different tools, never in one place", "CEO has to ask data team for every insight", "Month-end analysis takes 2 days", "Business decisions made on stale data"].map(i => (
                     <li key={i} className="before-after-item"><span className="before-after-icon">✗</span>{i}</li>
                   ))}
                 </ul>
@@ -94,7 +101,7 @@ export default function DashboardsPage() {
               <div className="before-after-card after-card">
                 <p className="before-after-label">✓ After</p>
                 <ul className="before-after-items">
-                  {["Reports generated in 4 seconds, delivered to your inbox","All data unified in one dashboard, always synced","Anyone can get answers by typing a question","Month-end closes instantly with automated analysis","Real-time data — decisions backed by fresh numbers"].map(i => (
+                  {["Reports generated in 4 seconds, delivered to your inbox", "All data unified in one dashboard, always synced", "Anyone can get answers by typing a question", "Month-end closes instantly with automated analysis", "Real-time data — decisions backed by fresh numbers"].map(i => (
                     <li key={i} className="before-after-item"><span className="before-after-icon">✓</span>{i}</li>
                   ))}
                 </ul>

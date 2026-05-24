@@ -1,5 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/citadel-script');
 @import url('https://fonts.cdnfonts.com/css/helvetica-neue-5');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
 
@@ -1432,6 +1433,7 @@ h5 {
   margin-top: 64px;
 }
 
+.services-grid>.animate-on-scroll {
 .services-grid > .animate-on-scroll {
   display: flex;
   flex-direction: column;
@@ -1439,24 +1441,27 @@ h5 {
 }
 
 .service-card {
+  font-family: 'DM Sans', sans-serif;
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--card-radius);
-  padding: var(--card-padding);
+  border: 1px solid transparent;
+  border-radius: 24px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  transition: border-color 0.3s var(--ease-out-expo),
-    box-shadow 0.3s var(--ease-out-expo),
-    transform 0.3s var(--ease-out-expo);
+  transition: all 0.4s var(--ease-out-expo);
   cursor: pointer;
   height: 100%;
 }
 
 .service-card:hover {
-  border-color: rgba(245, 98, 17, 0.4);
-  box-shadow: 0 0 40px rgba(245, 98, 17, 0.08);
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06), 0 0 80px rgba(245, 98, 17, 0.1);
+  border-color: rgba(245, 98, 17, 0.2);
+}
+
+.service-card:hover::after {
+  opacity: 1;
 }
 
 .service-card-header {
@@ -1466,8 +1471,10 @@ h5 {
 }
 
 .service-title {
-  font-size: 22px;
+  font-family: 'Sora', sans-serif;
+  font-size: 26px;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .service-tagline {
@@ -1483,7 +1490,7 @@ h5 {
 }
 
 .service-visual {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--surface);
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 16px;
@@ -1491,12 +1498,22 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 16px 0;
+  box-shadow: inset 0 2px 12px rgba(0,0,0,0.02);
+}
+
+.service-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  width: 100%;
+  margin: 16px 0;
 }
 
 .service-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-top: auto;
 }
 
 .service-chip {
@@ -1575,16 +1592,35 @@ h5 {
   justify-content: center;
 }
 
-.flow-node {
-  background: rgba(245, 98, 17, 0.1);
-  border: 1px solid rgba(245, 98, 17, 0.3);
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 11px;
-  color: var(--accent);
-  font-weight: 500;
-  white-space: nowrap;
-  flex-shrink: 0;
+.flow-node-box {
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.flow-node-box::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  pointer-events: none;
+  animation: flow-highlight 4s infinite step-end;
+}
+
+.node-1::after { animation-delay: 0s; }
+.node-2::after { animation-delay: 1s; }
+.node-3::after { animation-delay: 2s; }
+.node-4::after { animation-delay: 3s; }
+
+@keyframes flow-highlight {
+  0% { border-color: var(--accent); transform: scale(1.05); }
+  25% { border-color: transparent; transform: scale(1); }
+  100% { border-color: transparent; transform: scale(1); }
 }
 
 .flow-arrow {
@@ -1741,6 +1777,12 @@ h5 {
   margin-top: 64px;
 }
 
+.use-cases-grid>.animate-on-scroll {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .use-case-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1752,6 +1794,8 @@ h5 {
   transition: border-color 0.3s var(--ease-out-expo),
     box-shadow 0.3s var(--ease-out-expo),
     transform 0.3s var(--ease-out-expo);
+  height: 100%;
+  flex-grow: 1;
 }
 
 .use-case-card:hover {
@@ -1792,6 +1836,7 @@ h5 {
   color: var(--accent);
   font-family: 'SF Mono', 'Fira Code', monospace;
   line-height: 1.5;
+  margin-top: auto;
 }
 
 /* ============================================
@@ -2041,6 +2086,7 @@ h5 {
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-top: auto;
 }
 
 .testimonial-avatar {
@@ -2079,6 +2125,12 @@ h5 {
   gap: 20px;
 }
 
+.testimonials-grid>.animate-on-scroll {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .testimonial-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -2088,6 +2140,8 @@ h5 {
   flex-direction: column;
   gap: 20px;
   transition: border-color 0.3s, transform 0.3s var(--ease-out-expo);
+  height: 100%;
+  flex-grow: 1;
 }
 
 .testimonial-card:hover {
@@ -3509,4 +3563,29 @@ h5 {
   font-weight: 500;
   min-height: 20px;
   transition: color 0.3s ease;
+}
+
+/* Docx Preview Styles */
+.docx-preview h1,
+.docx-preview h2,
+.docx-preview h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: var(--text-primary);
+}
+
+.docx-preview p {
+  margin-bottom: 1em;
+  color: var(--text-secondary);
+}
+
+.docx-preview ul,
+.docx-preview ol {
+  margin-bottom: 1em;
+  padding-left: 20px;
+  color: var(--text-secondary);
+}
+
+.docx-preview li {
+  margin-bottom: 0.5em;
 }

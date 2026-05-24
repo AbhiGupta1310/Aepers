@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ScrollAnimation from "@/components/ScrollAnimation";
+import DocxModalButton from "@/components/DocxModalButton";
 
 export const metadata: Metadata = {
   title: "Workflow Automation — Aepers",
@@ -28,6 +29,12 @@ export default function WorkflowPage() {
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
               <Link href="/#contact" className="btn-primary">Book Free Audit →</Link>
               <Link href="/#how-it-works" className="btn-ghost">How It Works</Link>
+              <DocxModalButton 
+                title="Workflow Automation Specs" 
+                description=""
+                fileUrl="/docs/workflow-automation-spec.docx"
+                fileName="workflow-automation-spec.docx"
+              />
             </div>
           </div>
         </div>
@@ -84,7 +91,7 @@ export default function WorkflowPage() {
               <div className="before-after-card before-card">
                 <p className="before-after-label">✗ Before</p>
                 <ul className="before-after-items">
-                  {["Finance team manually processes 200 invoices/month","Onboarding new employees takes 3 days of HR time","Lead assignment done by hand from a spreadsheet","Reports compiled manually every Monday morning","Errors from copy-paste and human fatigue"].map(i => (
+                  {["Finance team manually processes 200 invoices/month", "Onboarding new employees takes 3 days of HR time", "Lead assignment done by hand from a spreadsheet", "Reports compiled manually every Monday morning", "Errors from copy-paste and human fatigue"].map(i => (
                     <li key={i} className="before-after-item"><span className="before-after-icon">✗</span>{i}</li>
                   ))}
                 </ul>
@@ -94,7 +101,7 @@ export default function WorkflowPage() {
               <div className="before-after-card after-card">
                 <p className="before-after-label">✓ After</p>
                 <ul className="before-after-items">
-                  {["Invoices processed and filed automatically overnight","Onboarding pipeline runs itself — accounts, docs, Slack","Leads assigned to reps in under 60 seconds","Reports generated and emailed automatically","Zero errors — every action is logged and auditable"].map(i => (
+                  {["Invoices processed and filed automatically overnight", "Onboarding pipeline runs itself — accounts, docs, Slack", "Leads assigned to reps in under 60 seconds", "Reports generated and emailed automatically", "Zero errors — every action is logged and auditable"].map(i => (
                     <li key={i} className="before-after-item"><span className="before-after-icon">✓</span>{i}</li>
                   ))}
                 </ul>

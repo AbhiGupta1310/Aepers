@@ -80,7 +80,7 @@ export default function TrustBar() {
         <div className="trust-stats">
           {stats.map((stat) => (
             <div key={stat.label} className="trust-stat">
-              <CountUp target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
+              <CountUp target={stat.value} suffix={stat.suffix} />
               <p className="trust-stat-label">{stat.label}</p>
             </div>
           ))}
