@@ -95,14 +95,10 @@ export default function HowItWorks() {
         </div>
 
         <ScrollAnimation delay={200}>
-          <div className="how-callout">
-            <div className="how-callout-inner">
-              <p className="how-callout-text">
-                <strong>Most AI agencies take 3–4 months and lock you into their platform.</strong>
-                {" "}We deliver in 2 weeks and give you the keys.
-              </p>
-            </div>
-          </div>
+          <p className="how-callout-text" style={{ marginTop: "64px", textAlign: "center" }}>
+            <strong>Most AI agencies take 3–4 months and lock you into their platform.</strong>
+            {" "}We deliver in 2 weeks and give you the keys.
+          </p>
         </ScrollAnimation>
       </div>
     </section>

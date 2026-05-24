@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 const stats = [
   { value: 14, suffix: " days", label: "to deployment" },
   { value: 100, suffix: "%", label: "code ownership" },
-  { prefix: "₹", value: 0, suffix: "", label: "lock-in fees" },
 ];
 
 const tickerItems = [
@@ -74,7 +73,7 @@ export default function TrustBar() {
         <div className="trust-stats">
           {stats.map((stat) => (
             <div key={stat.label} className="trust-stat">
-              <CountUp target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
+              <CountUp target={stat.value} suffix={stat.suffix} />
               <p className="trust-stat-label">{stat.label}</p>
             </div>
           ))}
