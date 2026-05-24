@@ -1433,7 +1433,6 @@ h5 {
   margin-top: 64px;
 }
 
-.services-grid>.animate-on-scroll {
 .services-grid > .animate-on-scroll {
   display: flex;
   flex-direction: column;
