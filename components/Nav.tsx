@@ -33,8 +33,7 @@ export default function Nav() {
           <div className="nav-inner">
             {/* Logo */}
             <Link href="/" className="nav-logo" aria-label="Aepers home">
-              <div className="nav-logo-icon" aria-hidden="true">✦</div>
-              <span style={{ fontFamily: "var(--font-script)", fontSize: "26px", fontWeight: "normal", letterSpacing: "0.02em" }}>Aepers</span>
+              <span style={{ fontFamily: "'Dancing Script', cursive", fontSize: "28px", fontWeight: "700", letterSpacing: "0.01em" }}>Aepers</span>
             </Link>
 
             {/* Center links */}
