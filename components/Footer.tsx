@@ -31,8 +31,8 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand">
             <Link href="/" className="nav-logo" style={{ width: "fit-content" }} aria-label="Aepers home">
-              <div className="nav-logo-icon" aria-hidden="true">✦</div>
-              <span style={{ fontFamily: "var(--font-script)", fontSize: "26px", fontWeight: "normal", letterSpacing: "0.02em" }}>Aepers</span>
+              <img src="/logo.png" alt="Aepers" className="nav-logo-icon" aria-hidden="true" />
+<span className="brand-satoshi">aepers</span>
             </Link>
             <p className="footer-tagline">
               AI automation for businesses that want to move faster.

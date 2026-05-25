@@ -1,13 +1,14 @@
 "use client";
-import { useEffect, useRef, ReactNode } from "react";
+import { useEffect, useRef, ReactNode, CSSProperties } from "react";
 
 interface ScrollAnimationProps {
   children: ReactNode;
   delay?: number;
   className?: string;
+  style?: CSSProperties;
 }
 
-export default function ScrollAnimation({ children, delay = 0, className = "" }: ScrollAnimationProps) {
+export default function ScrollAnimation({ children, delay = 0, className = "", style }: ScrollAnimationProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function ScrollAnimation({ children, delay = 0, className = "" }:
   }, [delay]);
 
   return (
-    <div ref={ref} className={`animate-on-scroll ${className}`}>
+    <div ref={ref} className={`animate-on-scroll ${className}`} style={style}>
       {children}
     </div>
   );
