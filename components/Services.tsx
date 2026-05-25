@@ -51,7 +51,7 @@ const serviceDetails: Record<string, ServiceDetail> = {
 
 export default function Services() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [activeTile, setActiveTile] = useState<string | null>(null);
+  const [activeTile, setActiveTile] = useState<string | null>("voice");
   const [hoveredTile, setHoveredTile] = useState<string | null>(null);
 
   const { initCanvas, handleMouseMove, handleClick } = useIsometricCanvas({
@@ -70,7 +70,7 @@ export default function Services() {
   // Which tile to show details for — hover takes priority, then active, then first
   const displayId = hoveredTile && hoveredTile !== "aepers"
     ? hoveredTile
-    : activeTile ?? null;
+    : activeTile ?? "voice";
 
   const displayTile = displayId ? tiles.find((t) => t.id === displayId) : null;
   const displayDetails = displayId ? serviceDetails[displayId] : null;

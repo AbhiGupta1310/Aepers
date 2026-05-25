@@ -3958,10 +3958,15 @@ h5 {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* Dynamic height to fit all content at once without scrolling, matching canvas min-height */
-  min-height: 520px;
-  height: auto;
-  overflow-y: visible;
+  /* Fixed height matching canvas height, with hidden scrollbar */
+  height: 520px;
+  overflow-y: auto;
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge */
+}
+
+.svc-detail-card::-webkit-scrollbar {
+  display: none;                  /* Safari/Chrome */
 }
 
 @keyframes svc-card-in {
@@ -4277,6 +4282,10 @@ h5 {
     gap: 32px;
   }
   .svc-detail-panel {
+    min-height: unset;
+  }
+  .svc-detail-card {
+    height: auto;
     min-height: unset;
   }
 }
