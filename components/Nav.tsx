@@ -33,7 +33,6 @@ export default function Nav() {
           <div className="nav-inner">
             {/* Logo */}
             <Link href="/" className="nav-logo" aria-label="Aepers home">
-
               <img src="/logo.png" alt="aepers" className="nav-logo-icon" aria-hidden="true" />
               <span className="brand-satoshi">aepers</span>
             </Link>

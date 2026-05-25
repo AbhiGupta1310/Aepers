@@ -2,6 +2,7 @@
 @import url('https://fonts.cdnfonts.com/css/helvetica-neue-5');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@400;600&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@1,2,3,4,5,6,7,8,9,10&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 /* ============================================
    CSS CUSTOM PROPERTIES — DESIGN TOKENS
    ============================================ */
@@ -197,6 +198,7 @@ h5 {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  align-self: flex-start;
 }
 
 .badge-teal {
@@ -1437,7 +1439,7 @@ h5 {
   margin-top: 64px;
 }
 
-.services-grid>.animate-on-scroll {
+.services-grid > .animate-on-scroll {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -1455,22 +1457,6 @@ h5 {
   transition: all 0.4s var(--ease-out-expo);
   cursor: pointer;
   height: 100%;
-  flex-grow: 1;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.03);
-  position: relative;
-  z-index: 1;
-}
-
-.service-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  background: radial-gradient(circle at 50% 100%, rgba(245, 98, 17, 0.08) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-out-expo);
-  z-index: -1;
-  pointer-events: none;
 }
 
 .service-card:hover {
@@ -1511,9 +1497,9 @@ h5 {
 .service-visual {
   background: var(--surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  padding: 32px 16px;
-  min-height: 140px;
+  border-radius: 12px;
+  padding: 16px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1550,6 +1536,7 @@ h5 {
   font-weight: 500;
   padding-top: 8px;
   border-top: 1px solid var(--border);
+  margin-top: auto;
 }
 
 .service-cta-link {

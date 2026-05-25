@@ -1,7 +1,14 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-const stats = [
+interface StatItem {
+  value: number;
+  suffix: string;
+  label: string;
+  prefix?: string;
+}
+
+const stats: StatItem[] = [
   { value: 14, suffix: " days", label: "to deployment" },
   { value: 100, suffix: "%", label: "code ownership" },
 ];

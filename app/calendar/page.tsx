@@ -28,9 +28,6 @@ export default function CalendarPage() {
 
         <ScrollAnimation>
           <CalendarWidget />
-          <div style={{ textAlign: "center", marginTop: "32px", fontSize: "14px", fontWeight: 600, color: "#B5A79C", letterSpacing: "0.05em" }}>
-            Cal.com
-          </div>
         </ScrollAnimation>
       </div>
     </section>
