@@ -3958,15 +3958,10 @@ h5 {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* Fixed height matching canvas height, with hidden scrollbar */
-  height: 520px;
-  overflow-y: auto;
-  scrollbar-width: none;          /* Firefox */
-  -ms-overflow-style: none;       /* IE/Edge */
-}
-
-.svc-detail-card::-webkit-scrollbar {
-  display: none;                  /* Safari/Chrome */
+  /* Auto-scaling height to fit all content at once without scrolling */
+  min-height: 520px;
+  height: auto;
+  overflow: visible;
 }
 
 @keyframes svc-card-in {
