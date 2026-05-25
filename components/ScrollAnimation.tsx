@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useRef, ReactNode } from "react";
+import { useEffect, useRef, ReactNode, CSSProperties } from "react";
 
 interface ScrollAnimationProps {
   children: ReactNode;
   delay?: number;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
 export default function ScrollAnimation({ children, delay = 0, className = "", style }: ScrollAnimationProps) {
