@@ -54,7 +54,7 @@ export function useIsometricCanvas({
     data: { hover: 0, targetHover: 0, active: false },
   });
 
-  const mouseRef = useRef({ x: 340, y: 260 });
+  const mouseRef = useRef({ x: 370, y: 280 });
   const hoveredTileRef = useRef<string | null>(hoveredTile);
   const activeTileRef = useRef<string | null>(activeTile);
 
@@ -69,12 +69,12 @@ export function useIsometricCanvas({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Retina (HiDPI) scaling — keep CSS display size fixed at 680×520
+    // Retina (HiDPI) scaling — keep CSS display size fixed at 740×560
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = 680 * dpr;
-    canvas.height = 520 * dpr;
-    canvas.style.width = "680px";
-    canvas.style.height = "520px";
+    canvas.width = 740 * dpr;
+    canvas.height = 560 * dpr;
+    canvas.style.width = "740px";
+    canvas.style.height = "560px";
     ctx.scale(dpr, dpr);
 
     let animationFrameId: number;
@@ -99,8 +99,8 @@ export function useIsometricCanvas({
       // 2. Dynamic cursor pointer feedback
       canvas.style.cursor = hasHovered ? "pointer" : "default";
 
-      // 3. Draw scene (clear in CSS-pixel space — drawing coords are 0..680 × 0..520)
-      ctx.clearRect(0, 0, 680, 520);
+      // 3. Draw scene (clear in CSS-pixel space — drawing coords are 0..740 × 0..560)
+      ctx.clearRect(0, 0, 740, 560);
       drawScene(ctx, time / 1000);
 
       animationFrameId = requestAnimationFrame(render);
@@ -128,9 +128,9 @@ export function useIsometricCanvas({
     let currentlyHovered: string | null = null;
 
     // A. Bounding Box check for the master 'aepers' Tile
-    const masterCx = 340;
-    const masterCy = 125;
-    const masterHalf = 90; // size 180
+    const masterCx = 370;
+    const masterCy = 130;
+    const masterHalf = 95; // size 190
     const insideMaster =
       Math.abs(mx - masterCx) / masterHalf + Math.abs(my - masterCy) / (masterHalf / 2) <= 1.05;
 
@@ -141,10 +141,10 @@ export function useIsometricCanvas({
       tiles.forEach((t, idx) => {
         const gx = idx % 2 === 0 ? -0.5 : 0.5;
         const gy = idx < 2 ? -0.5 : 0.5;
-        const size = 140; // Beautiful layout spacing
+        const size = 150; // Beautiful layout spacing
         const [cX, cY] = isoProject(gx * size, gy * size);
-        const cx = 340 + cX;
-        const cy = 325 + cY; // Centered lower at cy=325 to fit the master tile above
+        const cx = 370 + cX;
+        const cy = 345 + cY; // Centered lower to fit the master tile above
         const half = size / 2;
 
         const inside =
@@ -179,10 +179,10 @@ export function useIsometricCanvas({
     ctx: CanvasRenderingContext2D,
     t: number,
   ) => {
-    const size = 140;
-    const depth = 28;
-    const centreX = 340;
-    const centreY = 325; // Lowered center of grid for sub-tiles to cy=325
+    const size = 150;
+    const depth = 30;
+    const centreX = 370;
+    const centreY = 345; // Lowered center of grid for sub-tiles
     const grid = [
       { gx: -0.5, gy: -0.5, id: "voice" },
       { gx: 0.5, gy: -0.5, id: "chat" },
@@ -215,14 +215,14 @@ export function useIsometricCanvas({
     // 2. Draw the master "aepers" dot field when hovered/active
     const masterState = states["aepers"];
     if (masterState.hover > 0.01) {
-      drawMasterHoverDots(ctx, 340, 125, 180, t, masterState);
+      drawMasterHoverDots(ctx, 370, 130, 190, t, masterState);
     }
 
     // 3. Draw energy pipelines flowing down from "aepers" to the 4 modules
     drawEnergyPipelines(ctx, grid, centreX, centreY, size, t);
 
     // 4. Draw the master "aepers" Tile at the top
-    drawMasterTile(ctx, 340, 125, 180, 32, t, masterState);
+    drawMasterTile(ctx, 370, 130, 190, 34, t, masterState);
 
     // 5. Draw sub-tiles with beautiful lighting, layers, and hover lift
     grid.forEach(({ gx, gy, id }) => {
@@ -402,8 +402,8 @@ export function useIsometricCanvas({
     time: number,
   ) => {
     const states = stateRef.current;
-    const masterCx = 340;
-    const masterCy = 125 + 16; // Start from bottom of the master tile's depth
+    const masterCx = 370;
+    const masterCy = 130 + 17; // Start from bottom of the master tile's depth
 
     ctx.save();
     grid.forEach(({ gx, gy, id }) => {
@@ -427,7 +427,7 @@ export function useIsometricCanvas({
 
       // 2. Draw pulsing energy dot traveling along the line
       // When hovered, the particle speeds up and gets larger
-      const speed = subState.hover > 0.1 ? 3.0 : 1.5;
+      const speed = subState.hover > 0.1 ? 1.5 : 0.8;
       const progress = (time * speed) % 1;
       const px = lerp(masterCx, subCx, progress);
       const py = lerp(masterCy, subCy, progress);
@@ -468,7 +468,7 @@ export function useIsometricCanvas({
         const dist = Math.hypot(dx, dy);
         const maxDist = spread / 2;
         const baseOp = 1 - dist / maxDist;
-        const ripple = Math.sin(time * 2.5 + dist * 6) * 0.5 + 0.5;
+        const ripple = Math.sin(time * 1.2 + dist * 6) * 0.5 + 0.5;
         const op = baseOp * ripple * state.hover;
         ctx.globalAlpha = Math.max(0, Math.min(1, op));
         ctx.beginPath();
@@ -672,7 +672,7 @@ export function useIsometricCanvas({
         const dist = Math.hypot(dx, dy);
         const maxDist = spread / 2;
         const baseOp = 1 - dist / maxDist;
-        const ripple = Math.sin(time * 2.2 + dist * 8) * 0.5 + 0.5;
+        const ripple = Math.sin(time * 1.0 + dist * 8) * 0.5 + 0.5;
         const op = baseOp * ripple * state.hover;
         ctx.globalAlpha = Math.max(0, Math.min(1, op));
         ctx.beginPath();

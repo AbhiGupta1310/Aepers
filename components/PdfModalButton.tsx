@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
-import { X, FileText, Download, Loader2 } from "lucide-react";
+import { useState } from "react";
+import { X, FileText, Download } from "lucide-react";
 
 interface Props {
   title: string;
@@ -9,35 +9,13 @@ interface Props {
   fileName: string;
 }
 
-export default function DocxModalButton({ title, description, fileUrl, fileName }: Props) {
+export default function PdfModalButton({ title, description, fileUrl, fileName }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [docHtml, setDocHtml] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    if (isOpen && !docHtml) {
-      setIsLoading(true);
-      fetch(`/api/parse-docx?file=${encodeURIComponent(fileName)}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data.html) {
-            // Remove the table cells containing only numbers (1, 2, 3...) that cause misalignment
-            const cleanedHtml = data.html.replace(/<td><p><strong>\d+<\/strong><\/p><\/td>/g, '');
-            setDocHtml(cleanedHtml);
-          } else {
-            setError(true);
-          }
-        })
-        .catch(() => setError(true))
-        .finally(() => setIsLoading(false));
-    }
-  }, [isOpen, fileName, docHtml]);
 
   return (
     <>
       <button onClick={() => setIsOpen(true)} className="btn-ghost" style={{ cursor: "pointer" }}>
-        View Docx
+        View PDF
       </button>
 
       {isOpen && (
@@ -45,8 +23,8 @@ export default function DocxModalButton({ title, description, fileUrl, fileName 
           style={{
             position: "fixed",
             inset: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.4)",
-            backdropFilter: "blur(4px)",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backdropFilter: "blur(6px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -61,14 +39,15 @@ export default function DocxModalButton({ title, description, fileUrl, fileName 
               border: "1px solid var(--border)",
               borderRadius: "16px",
               padding: "32px",
-              maxWidth: "800px",
+              maxWidth: "900px",
               width: "100%",
               position: "relative",
-              boxShadow: "0 24px 48px rgba(0,0,0,0.2)",
+              boxShadow: "0 24px 48px rgba(0,0,0,0.3)",
               animation: "fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards",
               display: "flex",
               flexDirection: "column",
-              maxHeight: "90vh"
+              height: "85vh",
+              maxHeight: "900px"
             }} 
             onClick={e => e.stopPropagation()}
           >
@@ -120,54 +99,18 @@ export default function DocxModalButton({ title, description, fileUrl, fileName 
             </div>
             
             <div style={{ 
-              background: "var(--surface-2)", 
-              padding: "32px", 
+              background: "#ffffff", 
               borderRadius: "12px", 
               border: "1px solid var(--border-subtle)", 
               marginBottom: "24px",
-              overflowY: "auto",
-              flexGrow: 1
+              flexGrow: 1,
+              position: "relative",
+              overflow: "hidden"
             }}>
-              {isLoading && (
-                <div style={{ display: "flex", alignItems: "center", justifyItems: "center", padding: "60px 0", color: "var(--text-secondary)", gap: "12px", justifyContent: "center" }}>
-                  <Loader2 size={24} className="animate-spin" />
-                  <span>Loading document preview...</span>
-                </div>
-              )}
-              {error && !isLoading && (
-                <div style={{ textAlign: "center", padding: "40px", color: "var(--text-secondary)" }}>
-                  Preview unavailable. You can still download the file below.
-                </div>
-              )}
-              {docHtml && !isLoading && (
-                <>
-                  <style>{`
-                    .docx-preview ol,
-                    .docx-preview ul {
-                      list-style: none !important;
-                      padding-left: 0 !important;
-                      margin-left: 0 !important;
-                      counter-reset: none !important;
-                    }
-                    .docx-preview ol li,
-                    .docx-preview ul li {
-                      list-style: none !important;
-                    }
-                    .docx-preview ol li::before,
-                    .docx-preview ul li::before,
-                    .docx-preview ol li::marker,
-                    .docx-preview ul li::marker {
-                      content: none !important;
-                      display: none !important;
-                    }
-                  `}</style>
-                  <div 
-                    className="docx-preview"
-                    dangerouslySetInnerHTML={{ __html: docHtml }} 
-                    style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--text-primary)", fontFamily: "sans-serif" }}
-                  />
-                </>
-              )}
+              <iframe 
+                src={`${fileUrl}#toolbar=1`} 
+                style={{ width: "100%", height: "100%", border: "none" }} 
+              />
             </div>
             
             <div style={{ display: "flex", gap: "16px", flexShrink: 0 }}>
@@ -178,7 +121,7 @@ export default function DocxModalButton({ title, description, fileUrl, fileName 
                 style={{ width: "100%", justifyContent: "center", display: "flex", alignItems: "center", gap: "8px" }} 
                 onClick={() => setIsOpen(false)}
               >
-                <Download size={18} /> Download {fileName}
+                <Download size={18} /> Download PDF
               </a>
             </div>
           </div>

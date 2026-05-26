@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import DocxModalButton from "@/components/DocxModalButton";
+import PdfModalButton from "@/components/PdfModalButton";
 
 export const metadata: Metadata = {
   title: "Workflow Automation — Aepers",
@@ -29,11 +29,11 @@ export default function WorkflowPage() {
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
               <Link href="/#contact" className="btn-primary">Book Free Audit →</Link>
               <Link href="/#how-it-works" className="btn-ghost">How It Works</Link>
-              <DocxModalButton 
+              <PdfModalButton 
                 title="Workflow Automation Specs" 
                 description=""
-                fileUrl="/docs/workflow-automation-spec.docx"
-                fileName="workflow-automation-spec.docx"
+                fileUrl="/docs/workflow-automation-spec.pdf"
+                fileName="workflow-automation-spec.pdf"
               />
             </div>
           </div>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import DocxModalButton from "@/components/DocxModalButton";
+import PdfModalButton from "@/components/PdfModalButton";
 
 export const metadata: Metadata = {
   title: "RAG Chatbots — Aepers",
@@ -29,11 +29,11 @@ export default function ChatbotsPage() {
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
               <Link href="/#contact" className="btn-primary">Book Free Audit →</Link>
               <Link href="/#how-it-works" className="btn-ghost">How It Works</Link>
-              <DocxModalButton 
+              <PdfModalButton 
                 title="Chatbot Specifications" 
                 description=""
-                fileUrl="/docs/chatbot-spec.docx"
-                fileName="chatbot-spec.docx"
+                fileUrl="/docs/chatbot-spec.pdf"
+                fileName="chatbot-spec.pdf"
               />
             </div>
           </div>

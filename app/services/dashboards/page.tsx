@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import DocxModalButton from "@/components/DocxModalButton";
+import PdfModalButton from "@/components/PdfModalButton";
 
 export const metadata: Metadata = {
   title: "Data Pipelines & Dashboards — Aepers",
@@ -29,11 +29,11 @@ export default function DashboardsPage() {
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
               <Link href="/#contact" className="btn-primary">Book Free Audit →</Link>
               <Link href="/#how-it-works" className="btn-ghost">How It Works</Link>
-              <DocxModalButton 
+              <PdfModalButton 
                 title="Data Dashboards Specs" 
                 description=""
-                fileUrl="/docs/data-dashboards-spec.docx"
-                fileName="data-dashboards-spec.docx"
+                fileUrl="/docs/data-dashboards-spec.pdf"
+                fileName="data-dashboards-spec.pdf"
               />
             </div>
           </div>

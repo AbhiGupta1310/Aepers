@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CTASection from "@/components/CTASection";
 import ScrollAnimation from "@/components/ScrollAnimation";
-import DocxModalButton from "@/components/DocxModalButton";
+import PdfModalButton from "@/components/PdfModalButton";
 
 export const metadata: Metadata = {
   title: "AI Voice Agents — Aepers",
@@ -56,11 +56,11 @@ export default function VoiceAgentsPage() {
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
               <Link href="/#contact" className="btn-primary">Book Free Audit →</Link>
               <Link href="/#how-it-works" className="btn-ghost">How It Works</Link>
-              <DocxModalButton 
+              <PdfModalButton 
                 title="Voice Agent Specifications" 
                 description=""
-                fileUrl="/docs/voice-agent-spec.docx"
-                fileName="voice-agent-spec.docx"
+                fileUrl="/docs/voice-agent-spec.pdf"
+                fileName="voice-agent-spec.pdf"
               />
             </div>
           </div>
